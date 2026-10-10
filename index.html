@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>little letters</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=DM+Sans:wght@400;500;600&family=Fredoka:wght@400;500;600&family=Patrick+Hand&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- BACKGROUND DECORATIONS -->
+
+<div class="background">
+
+    <div class="doodle dot" style="left:8%;top:21%;"></div>
+    <div class="doodle dot blue" style="left:13%;top:58%;"></div>
+    <div class="doodle dot yellow" style="left:22%;top:35%;"></div>
+    <div class="doodle dot green" style="left:88%;top:27%;"></div>
+    <div class="doodle dot" style="left:92%;top:67%;"></div>
+    <div class="doodle dot blue" style="left:77%;top:17%;"></div>
+    <div class="doodle dot yellow" style="left:70%;top:79%;"></div>
+
+    <div class="small-flower" style="left:5%;top:34%;transform:rotate(-15deg);">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <div class="center"></div>
+    </div>
+
+    <div class="small-flower flower-blue" style="right:5%;top:44%;transform:rotate(12deg);">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <div class="center"></div>
+    </div>
+
+    <div class="small-flower flower-lavender" style="left:9%;bottom:14%;transform:scale(.8);">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <div class="center"></div>
+    </div>
+
+    <div class="small-flower flower-yellow" style="right:9%;bottom:20%;transform:scale(.85);">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <div class="center"></div>
+    </div>
+
+    <div class="small-flower flower-green" style="left:28%;top:12%;transform:scale(.55);">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <div class="center"></div>
+    </div>
+
+    <div class="small-flower flower-blue" style="right:27%;top:11%;transform:scale(.55);">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <div class="center"></div>
+    </div>
+
+    <div class="sparkle" style="left:16%;top:17%;"></div>
+    <div class="sparkle" style="right:17%;top:29%;transform:scale(.65);"></div>
+    <div class="sparkle" style="left:26%;bottom:25%;transform:scale(.55);"></div>
+    <div class="sparkle" style="right:25%;bottom:16%;transform:scale(.7);"></div>
+
+    <div class="paper-scrap paper-pink" style="left:17%;top:74%;"></div>
+    <div class="paper-scrap paper-blue" style="right:13%;top:19%;transform:rotate(17deg);"></div>
+    <div class="paper-scrap paper-yellow" style="right:20%;bottom:10%;transform:rotate(-18deg);"></div>
+    <div class="paper-scrap paper-green" style="left:20%;top:11%;transform:rotate(22deg);"></div>
+
+</div>
+
+
+<main class="page">
+
+    <h1 class="title">little letters</h1>
+
+    <div class="subtitle">from Sumit</div>
+
+
+    <!-- MAILBOX -->
+
+    <section class="mailbox-area">
+
+        <div class="mailbox-wrap" id="mailbox">
+
+            <div class="mailbox-shadow"></div>
+
+            <div class="mailbox-post"></div>
+
+            <div class="mailbox-body">
+
+                <div class="mailbox-inside">
+
+                    <div class="mailbox-highlight"></div>
+
+                    <div class="mail-slot"></div>
+
+                    <div class="mail-inside-paper"></div>
+
+                </div>
+
+                <div class="mailbox-door">
+
+                    <div class="mail-label">
+                        for Karpi
+                    </div>
+
+                    <div class="mail-handle"></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- LEFT FLOWER -->
+
+            <div class="mail-flower left">
+
+                <div class="flower-head"></div>
+
+                <div class="flower-stem"></div>
+
+                <div class="flower-leaf one"></div>
+                <div class="flower-leaf two"></div>
+
+            </div>
+
+
+            <!-- RIGHT FLOWER -->
+
+            <div class="mail-flower right">
+
+                <div class="flower-head"></div>
+
+                <div class="flower-stem"></div>
+
+                <div class="flower-leaf one"></div>
+                <div class="flower-leaf two"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="instruction" id="instruction">
+        click the mailbox
+    </div>
+
+
+    <!-- THREE LETTERS -->
+
+    <section class="letters-area" id="lettersArea">
+
+        <div class="envelope" data-letter="reminder">
+
+            <div class="stamp"></div>
+
+            <div class="envelope-title">
+                Just a Little<br>
+                Reminder
+            </div>
+
+        </div>
+
+
+        <div class="envelope" data-letter="littleThings">
+
+            <div class="stamp"></div>
+
+            <div class="envelope-title">
+                Just So You<br>
+                Know
+            </div>
+
+        </div>
+
+
+        <div class="envelope" data-letter="heart">
+
+            <div class="stamp"></div>
+
+            <div class="envelope-title">
+                Keep Going
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- LETTER WINDOW -->
+
+<div class="letter-overlay" id="letterOverlay">
+
+    <article class="letter-paper">
+
+        <button class="close-letter" id="closeLetter">
+            ×
+        </button>
+
+        <h2 class="letter-heading" id="letterHeading"></h2>
+
+        <div class="letter-body" id="letterBody"></div>
+
+    </article>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
