@@ -1,0 +1,1506 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 15% 18%,
+            rgba(244, 194, 204, 0.18),
+            transparent 18%
+        ),
+        radial-gradient(
+            circle at 84% 23%,
+            rgba(190, 211, 231, 0.18),
+            transparent 20%
+        ),
+        radial-gradient(
+            circle at 20% 78%,
+            rgba(207, 220, 190, 0.16),
+            transparent 19%
+        ),
+        #f7f2e7;
+
+    color: #68564c;
+
+    font-family: "DM Sans", sans-serif;
+
+    overflow-x: hidden;
+}
+
+
+/* --------------------------------------------------
+   BACKGROUND
+-------------------------------------------------- */
+
+.background {
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 0;
+}
+
+.doodle {
+    position: absolute;
+    opacity: 0.42;
+}
+
+.dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #d8a8ae;
+}
+
+.dot.blue {
+    background: #a9c7d7;
+}
+
+.dot.yellow {
+    background: #d9c783;
+}
+
+.dot.green {
+    background: #aabd9d;
+}
+
+
+/* flowers */
+
+.small-flower {
+    position: absolute;
+
+    width: 42px;
+    height: 42px;
+}
+
+.small-flower .center {
+    position: absolute;
+
+    width: 10px;
+    height: 10px;
+
+    background: #d9b967;
+
+    border-radius: 50%;
+
+    left: 16px;
+    top: 16px;
+
+    z-index: 2;
+}
+
+.small-flower span {
+    position: absolute;
+
+    width: 16px;
+    height: 13px;
+
+    border-radius: 50%;
+
+    background: #efb9bf;
+}
+
+.small-flower span:nth-child(1) {
+    top: 2px;
+    left: 13px;
+}
+
+.small-flower span:nth-child(2) {
+    top: 13px;
+    left: 2px;
+
+    transform: rotate(-45deg);
+}
+
+.small-flower span:nth-child(3) {
+    top: 27px;
+    left: 12px;
+}
+
+.small-flower span:nth-child(4) {
+    top: 14px;
+    left: 25px;
+
+    transform: rotate(45deg);
+}
+
+.flower-blue span {
+    background: #b9d2df;
+}
+
+.flower-lavender span {
+    background: #c9c1dc;
+}
+
+.flower-yellow span {
+    background: #ead99b;
+}
+
+.flower-green span {
+    background: #c2d4b8;
+}
+
+
+/* leaves */
+
+.leaf {
+    position: absolute;
+
+    width: 25px;
+    height: 12px;
+
+    background: #a9bb91;
+
+    border-radius: 100% 0 100% 0;
+}
+
+
+/* sparkles */
+
+.sparkle {
+    position: absolute;
+
+    width: 17px;
+    height: 17px;
+}
+
+.sparkle::before,
+.sparkle::after {
+    content: "";
+
+    position: absolute;
+
+    background: #d6bd87;
+
+    border-radius: 50%;
+}
+
+.sparkle::before {
+    width: 3px;
+    height: 17px;
+
+    left: 7px;
+    top: 0;
+}
+
+.sparkle::after {
+    width: 17px;
+    height: 3px;
+
+    left: 0;
+    top: 7px;
+}
+
+
+/* paper scraps */
+
+.paper-scrap {
+    position: absolute;
+
+    width: 45px;
+    height: 31px;
+
+    border-radius: 3px;
+
+    opacity: 0.5;
+
+    transform: rotate(-12deg);
+}
+
+.paper-pink {
+    background: #ecc5c8;
+}
+
+.paper-blue {
+    background: #c2d9e5;
+}
+
+.paper-yellow {
+    background: #eadfae;
+}
+
+.paper-green {
+    background: #d0ddc5;
+}
+
+
+/* --------------------------------------------------
+   MAIN
+-------------------------------------------------- */
+
+.page {
+    position: relative;
+
+    z-index: 2;
+
+    width: min(1180px, 94vw);
+
+    margin: 0 auto;
+
+    min-height: 100vh;
+
+    padding: 58px 20px 70px;
+
+    text-align: center;
+}
+
+
+/* cute lowercase title */
+
+.title {
+    margin: 0;
+
+    font-family: "Fredoka", sans-serif;
+
+    font-size: clamp(58px, 7vw, 92px);
+
+    line-height: 0.9;
+
+    font-weight: 500;
+
+    letter-spacing: -1px;
+
+    color: #6d5660;
+
+    text-shadow:
+        0 2px 0 rgba(255,255,255,.35);
+}
+
+.subtitle {
+    margin-top: 22px;
+
+    font-family: "Patrick Hand", cursive;
+
+    font-size: 27px;
+
+    color: #80665b;
+
+    transform: none;
+}
+
+
+/* --------------------------------------------------
+   MAILBOX
+-------------------------------------------------- */
+
+.mailbox-area {
+    position: relative;
+
+    width: 100%;
+
+    height: 390px;
+
+    margin-top: 28px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+.mailbox-wrap {
+    position: relative;
+
+    width: 360px;
+    height: 310px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease;
+}
+
+.mailbox-wrap:hover {
+    transform: translateY(-4px);
+}
+
+.mailbox-wrap.shake {
+    animation:
+        mailboxShake
+        0.65s
+        ease;
+}
+
+@keyframes mailboxShake {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    20% {
+        transform: rotate(-2deg);
+    }
+
+    40% {
+        transform: rotate(2deg);
+    }
+
+    60% {
+        transform: rotate(-1.5deg);
+    }
+
+    80% {
+        transform: rotate(1deg);
+    }
+}
+
+
+/* mailbox shadow */
+
+.mailbox-shadow {
+    position: absolute;
+
+    width: 230px;
+    height: 28px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(104, 86, 76, 0.12);
+
+    bottom: 8px;
+    left: 65px;
+
+    filter: blur(5px);
+}
+
+
+/* mailbox post */
+
+.mailbox-post {
+    position: absolute;
+
+    width: 30px;
+    height: 85px;
+
+    left: 165px;
+    bottom: 13px;
+
+    background: #b99372;
+
+    border-radius: 3px;
+
+    box-shadow:
+        inset 4px 0 rgba(255,255,255,0.18),
+        inset -4px 0 rgba(93,63,44,0.1);
+}
+
+
+/* mailbox body */
+
+.mailbox-body {
+    position: absolute;
+
+    width: 285px;
+    height: 215px;
+
+    left: 37px;
+    top: 38px;
+
+    background: #e9a9b4;
+
+    border: 2px solid #d78e9c;
+
+    border-radius:
+        92px
+        92px
+        24px
+        24px;
+
+    box-shadow:
+        inset 0 8px rgba(255,255,255,0.16),
+        0 10px 22px rgba(92,67,56,0.1);
+}
+
+
+/* inside */
+
+.mailbox-inside {
+    position: absolute;
+
+    width: 245px;
+    height: 164px;
+
+    left: 20px;
+    top: 21px;
+
+    background: #806c6f;
+
+    border-radius:
+        72px
+        72px
+        14px
+        14px;
+
+    overflow: hidden;
+}
+
+.mailbox-highlight {
+    position: absolute;
+
+    width: 180px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,0.13);
+
+    top: 18px;
+    left: 33px;
+}
+
+
+/* opening */
+
+.mail-slot {
+    position: absolute;
+
+    width: 95px;
+    height: 10px;
+
+    background: #5f4d51;
+
+    border-radius: 30px;
+
+    top: 27px;
+    left: 75px;
+}
+
+
+/* paper inside mailbox */
+
+.mail-inside-paper {
+    position: absolute;
+
+    width: 155px;
+    height: 88px;
+
+    background: #f8e4dc;
+
+    left: 45px;
+    top: 48px;
+
+    transform: rotate(-3deg);
+
+    border-radius: 3px;
+
+    box-shadow:
+        0 3px 6px
+        rgba(60,40,35,0.08);
+}
+
+.mail-inside-paper::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    top: 0;
+
+    margin: auto;
+
+    width: 110px;
+    height: 55px;
+
+    border-left:
+        1px solid rgba(100,80,70,0.15);
+
+    border-bottom:
+        1px solid rgba(100,80,70,0.15);
+
+    transform:
+        rotate(-45deg);
+}
+
+
+/* mailbox door */
+
+.mailbox-door {
+    position: absolute;
+
+    width: 285px;
+    height: 82px;
+
+    left: 0;
+    bottom: -2px;
+
+    background: #e8a5b1;
+
+    border: 2px solid #d78e9c;
+
+    border-radius:
+        16px
+        16px
+        24px
+        24px;
+
+    transform-origin:
+        top center;
+
+    transition:
+        transform 0.8s
+        cubic-bezier(.2,.8,.2,1),
+
+        background 0.3s ease;
+
+    z-index: 10;
+
+    box-shadow:
+        inset 0 5px
+        rgba(255,255,255,0.14),
+
+        0 4px 8px
+        rgba(92,67,56,0.08);
+}
+
+
+/* mailbox door opens */
+
+.mailbox-wrap.open .mailbox-door {
+    transform:
+        perspective(500px)
+        rotateX(-68deg);
+}
+
+
+/* mailbox label */
+
+.mail-label {
+    position: absolute;
+
+    width: 142px;
+    height: 49px;
+
+    background: #fff7e7;
+
+    left: 71px;
+    top: 17px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-family:
+        "Patrick Hand",
+        cursive;
+
+    font-size: 23px;
+
+    color: #6d5660;
+
+    transform: none;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 3px 7px
+        rgba(80,60,50,0.1);
+}
+
+
+/* mailbox handle */
+
+.mail-handle {
+    position: absolute;
+
+    width: 28px;
+    height: 8px;
+
+    border-radius: 10px;
+
+    background: #9b7b53;
+
+    left: 128px;
+    bottom: 10px;
+}
+
+
+/* --------------------------------------------------
+   FLOWERS BESIDE MAILBOX
+-------------------------------------------------- */
+
+.mail-flower {
+    position: absolute;
+
+    width: 70px;
+    height: 135px;
+
+    bottom: 43px;
+
+    z-index: 12;
+}
+
+.mail-flower.left {
+    left: -20px;
+
+    transform: rotate(-5deg);
+}
+
+.mail-flower.right {
+    right: -20px;
+
+    transform:
+        scaleX(-1)
+        rotate(-5deg);
+}
+
+.flower-stem {
+    position: absolute;
+
+    width: 5px;
+    height: 100px;
+
+    background: #92a77f;
+
+    left: 32px;
+    top: 31px;
+
+    border-radius: 10px;
+}
+
+.flower-leaf {
+    position: absolute;
+
+    width: 30px;
+    height: 15px;
+
+    background: #a8ba91;
+
+    border-radius:
+        100%
+        0
+        100%
+        0;
+}
+
+.flower-leaf.one {
+    left: 5px;
+    top: 72px;
+
+    transform: rotate(-25deg);
+}
+
+.flower-leaf.two {
+    left: 35px;
+    top: 91px;
+
+    transform: rotate(45deg);
+}
+
+.flower-head {
+    position: absolute;
+
+    width: 47px;
+    height: 47px;
+
+    top: 0;
+    left: 8px;
+}
+
+.flower-head::before,
+.flower-head::after {
+    content: "";
+
+    position: absolute;
+
+    background: #f1bdc0;
+
+    width: 22px;
+    height: 18px;
+
+    border-radius: 50%;
+}
+
+.flower-head::before {
+    left: 0;
+    top: 14px;
+
+    transform: rotate(-35deg);
+
+    box-shadow:
+        25px -5px 0 #f1bdc0,
+        28px 17px 0 #f1bdc0,
+        5px 27px 0 #f1bdc0;
+}
+
+.flower-head::after {
+    width: 11px;
+    height: 11px;
+
+    background: #d8b65f;
+
+    left: 18px;
+    top: 19px;
+}
+
+
+/* --------------------------------------------------
+   INSTRUCTION
+-------------------------------------------------- */
+
+.instruction {
+    margin-top: -4px;
+
+    margin-bottom: 25px;
+
+    color: #8a7469;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+}
+
+.instruction strong {
+    font-weight: 600;
+}
+
+
+/* --------------------------------------------------
+   PRETTY ENVELOPES
+-------------------------------------------------- */
+
+.letters-area {
+    position: relative;
+
+    width: min(900px, 94vw);
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(160px, 190px)
+        );
+
+    gap: 28px;
+
+    justify-content: center;
+
+    justify-items: center;
+
+    opacity: 0;
+
+    transform:
+        translateY(30px);
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.6s ease,
+
+        transform 0.7s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+.letters-area.visible {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+    pointer-events: auto;
+}
+
+
+/* envelope body */
+
+.envelope {
+    position: relative;
+
+    width: 190px;
+    height: 132px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(105,78,82,0.14);
+
+    box-shadow:
+        0 10px 20px
+        rgba(93,72,62,0.10),
+
+        0 2px 4px
+        rgba(93,72,62,0.06),
+
+        inset 0 1px
+        rgba(255,255,255,.42);
+
+    transition:
+        transform 0.28s
+        cubic-bezier(.2,.8,.2,1),
+
+        box-shadow 0.28s ease,
+
+        opacity 0.4s ease,
+
+        filter 0.28s ease;
+}
+
+
+/* envelope colours */
+
+.envelope:nth-child(1) {
+    background:
+        linear-gradient(
+            145deg,
+            #f4cbd0,
+            #e9b5bd
+        );
+}
+
+.envelope:nth-child(2) {
+    background:
+        linear-gradient(
+            145deg,
+            #f4e9b7,
+            #e9d99b
+        );
+}
+
+.envelope:nth-child(3) {
+    background:
+        linear-gradient(
+            145deg,
+            #ded8ec,
+            #c9c2dc
+        );
+}
+
+
+/* hover */
+
+.envelope:hover {
+    transform:
+        translateY(-9px)
+        scale(1.035);
+
+    box-shadow:
+        0 18px 30px
+        rgba(93,72,62,0.14),
+
+        0 4px 8px
+        rgba(93,72,62,0.06),
+
+        inset 0 1px
+        rgba(255,255,255,.5);
+}
+
+
+/* top envelope flap */
+
+.envelope::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0 0 auto 0;
+
+    width: 100%;
+    height: 78px;
+
+    background:
+        rgba(255,255,255,0.16);
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 100%
+        );
+
+    border-bottom:
+        1px solid
+        rgba(105,78,82,0.10);
+
+    z-index: 2;
+}
+
+
+/* lower envelope folds */
+
+.envelope::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    bottom: -1px;
+
+    height: 72px;
+
+    background:
+
+        linear-gradient(
+            34deg,
+            transparent 49.3%,
+            rgba(105,78,82,0.13) 50%,
+            transparent 50.7%
+        ),
+
+        linear-gradient(
+            -34deg,
+            transparent 49.3%,
+            rgba(105,78,82,0.13) 50%,
+            transparent 50.7%
+        );
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+
+/* cute little seal */
+
+.stamp {
+    position: absolute;
+
+    width: 31px;
+    height: 31px;
+
+    right: 13px;
+    top: 12px;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,248,238,0.92);
+
+    box-shadow:
+        0 2px 5px
+        rgba(80,60,50,0.10);
+
+    z-index: 5;
+
+    transform: none;
+}
+
+.stamp::after {
+    content: "♡";
+
+    position: absolute;
+
+    inset: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    font-family:
+        "Fredoka",
+        sans-serif;
+
+    font-size: 18px;
+
+    color: #c88f9c;
+}
+
+.envelope:nth-child(2)
+.stamp::after {
+    color: #c4a95e;
+}
+
+.envelope:nth-child(3)
+.stamp::after {
+    color: #9b8db8;
+}
+
+
+/* envelope title */
+
+.envelope-title {
+    position: absolute;
+
+    left: 12px;
+    right: 12px;
+
+    top: 52px;
+
+    z-index: 4;
+
+    font-family:
+        "Patrick Hand",
+        cursive;
+
+    font-size: 25px;
+
+    line-height: 1.02;
+
+    color: #67554d;
+
+    text-shadow:
+        0 1px
+        rgba(255,255,255,.25);
+}
+
+
+/* selected/locked */
+
+.envelope.locked {
+    pointer-events: none;
+
+    opacity: 0.22;
+
+    filter:
+        grayscale(0.12);
+
+    transform:
+        scale(0.96);
+}
+
+
+/* envelope entrance */
+
+.envelope.pop {
+    animation:
+        envelopePop
+        0.7s
+        cubic-bezier(.2,.8,.2,1)
+        both;
+}
+
+@keyframes envelopePop {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(50px)
+            scale(0.7);
+    }
+
+    65% {
+        transform:
+            translateY(-10px)
+            scale(1.05);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* --------------------------------------------------
+   LETTER MODAL
+-------------------------------------------------- */
+
+.letter-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(76,60,53,0.28);
+
+    backdrop-filter:
+        blur(7px);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 22px;
+
+    z-index: 100;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.35s ease;
+}
+
+.letter-overlay.open {
+    opacity: 1;
+
+    pointer-events: auto;
+}
+
+.letter-paper {
+    position: relative;
+
+    width: min(760px, 94vw);
+
+    max-height: 82vh;
+
+    overflow-y: auto;
+
+    background: #fffaf0;
+
+    border:
+        1px solid
+        #e5d8c4;
+
+    box-shadow:
+        0 25px 70px
+        rgba(61,45,38,0.2);
+
+    padding:
+        48px
+        55px
+        55px;
+
+    text-align: left;
+
+    transform:
+        translateY(25px)
+        scale(0.96);
+
+    transition:
+        transform 0.45s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+.letter-overlay.open
+.letter-paper {
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* close button */
+
+.close-letter {
+    position: absolute;
+
+    right: 18px;
+    top: 16px;
+
+    width: 40px;
+    height: 40px;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background: #ead6d5;
+
+    color: #69544b;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease;
+}
+
+.close-letter:hover {
+    transform:
+        scale(1.08);
+}
+
+
+/* letter heading */
+
+.letter-heading {
+    margin:
+        0 0 30px;
+
+    font-family:
+        "Patrick Hand",
+        cursive;
+
+    font-size: 34px;
+
+    font-weight: 400;
+
+    color: #69544b;
+}
+
+
+/* letter body */
+
+.letter-body {
+    font-family:
+        "DM Sans",
+        sans-serif;
+
+    font-size: 18px;
+
+    line-height: 1.9;
+
+    color: #65544c;
+}
+
+.letter-body p {
+    margin:
+        0 0 25px;
+}
+
+.letter-body .signature {
+    margin-top: 10px;
+}
+
+
+/* --------------------------------------------------
+   PETALS
+-------------------------------------------------- */
+
+.petal {
+    position: fixed;
+
+    width: 9px;
+    height: 14px;
+
+    border-radius:
+        100%
+        0
+        100%
+        0;
+
+    background: #e9b9bf;
+
+    pointer-events: none;
+
+    z-index: 20;
+
+    opacity: 0;
+}
+
+.petal.active {
+    animation:
+        fall
+        5s
+        linear
+        forwards;
+}
+
+@keyframes fall {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(-20px)
+            rotate(0deg);
+    }
+
+    10% {
+        opacity: 0.7;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translateY(100vh)
+            translateX(90px)
+            rotate(340deg);
+    }
+}
+
+
+/* --------------------------------------------------
+   TABLET
+-------------------------------------------------- */
+
+@media (max-width: 950px) {
+
+    .page {
+        padding-top: 40px;
+    }
+
+    .letters-area {
+        grid-template-columns:
+            repeat(
+                3,
+                minmax(160px, 190px)
+            );
+    }
+}
+
+
+/* --------------------------------------------------
+   MOBILE
+-------------------------------------------------- */
+
+@media (max-width: 650px) {
+
+    .page {
+        padding:
+            32px
+            12px
+            50px;
+    }
+
+    .title {
+        font-size: 62px;
+
+        letter-spacing: -1px;
+    }
+
+    .subtitle {
+        font-size: 23px;
+
+        margin-top: 16px;
+    }
+
+    .mailbox-area {
+        height: 350px;
+
+        margin-top: 10px;
+    }
+
+    .mailbox-wrap {
+        transform:
+            scale(0.9);
+    }
+
+    .mailbox-wrap:hover {
+        transform:
+            scale(0.9)
+            translateY(-3px);
+    }
+
+    .mailbox-wrap.shake {
+        animation:
+            mobileShake
+            0.65s
+            ease;
+    }
+
+    @keyframes mobileShake {
+
+        0%,
+        100% {
+            transform:
+                scale(0.9)
+                rotate(0deg);
+        }
+
+        25% {
+            transform:
+                scale(0.9)
+                rotate(-2deg);
+        }
+
+        50% {
+            transform:
+                scale(0.9)
+                rotate(2deg);
+        }
+
+        75% {
+            transform:
+                scale(0.9)
+                rotate(-1deg);
+        }
+    }
+
+
+    .letters-area {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(145px, 190px)
+            );
+
+        gap: 16px;
+    }
+
+    .envelope {
+        width: 170px;
+        height: 118px;
+    }
+
+    .letter-paper {
+        padding:
+            40px
+            25px
+            35px;
+    }
+
+    .letter-heading {
+        font-size: 29px;
+    }
+
+    .letter-body {
+        font-size: 16px;
+
+        line-height: 1.75;
+    }
+
+    .mail-flower.left {
+        left: -5px;
+    }
+
+    .mail-flower.right {
+        right: -5px;
+    }
+
+    .background .paper-scrap {
+        opacity: 0.28;
+    }
+}
+
+
+/* --------------------------------------------------
+   SMALL PHONES
+-------------------------------------------------- */
+
+@media (max-width: 420px) {
+
+    .title {
+        font-size: 60px;
+    }
+
+    .mailbox-wrap {
+        transform:
+            scale(0.78);
+    }
+
+    .mailbox-wrap:hover {
+        transform:
+            scale(0.78)
+            translateY(-3px);
+    }
+
+    .letters-area {
+        grid-template-columns: 1fr;
+    }
+
+    .envelope {
+        width: 180px;
+        height: 125px;
+    }
+}
